@@ -56,7 +56,7 @@ class FlutterInstagramStories extends StatefulWidget {
   final ProgressPosition progressPosition;
   final bool repeat;
   final bool inline;
-  final QuerySnapshot querySnapshot;
+  final Stream<QuerySnapshot> querySnapshot;
 
   FlutterInstagramStories(
       {@required this.collectionDbName,
