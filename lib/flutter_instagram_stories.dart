@@ -56,7 +56,7 @@ class FlutterInstagramStories extends StatefulWidget {
   final ProgressPosition progressPosition;
   final bool repeat;
   final bool inline;
-final QuerySnapshot querySnapshot;
+  final QuerySnapshot querySnapshot;
 
   FlutterInstagramStories(
       {@required this.collectionDbName,
@@ -125,7 +125,7 @@ class _FlutterInstagramStoriesState extends State<FlutterInstagramStories> {
       color: Colors.white,
       height: widget.iconHeight + 24,
       child: StreamBuilder<QuerySnapshot>(
-        stream: _querySnapshot,
+        stream: querySnapshot,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return ListView.builder(
