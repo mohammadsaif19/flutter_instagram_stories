@@ -130,8 +130,7 @@ class _FlutterInstagramStoriesState extends State<FlutterInstagramStories> {
       child: StreamBuilder<QuerySnapshot>(
         stream: _firestore
             .collection(widget.collectionDbName)
-         .where("date", isGreaterThanOrEqualTo: cutOff)
-            .orderBy('date', descending: widget.sortingOrderDesc)
+            .where("date", isGreaterThanOrEqualTo: cutOff)           
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
