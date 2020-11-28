@@ -56,9 +56,11 @@ class FlutterInstagramStories extends StatefulWidget {
   final ProgressPosition progressPosition;
   final bool repeat;
   final bool inline;
+final QuerySnapshot querySnapshot;
 
   FlutterInstagramStories(
       {@required this.collectionDbName,
+       @required this.querySnapshot
       this.lastIconHighlight = false,
       this.lastIconHighlightColor = Colors.deepOrange,
       this.lastIconHighlightRadius = const Radius.circular(15.0),
@@ -113,13 +115,8 @@ class _FlutterInstagramStoriesState extends State<FlutterInstagramStories> {
     super.initState();
   }
   
-//   var now = Timestamp.now();
 
-//   var todayInSeconds = now.seconds;
-//   var todayInNanoSeconds = now.nanoseconds;
-
-// //24 hours ago since now
-//   var cutOff = Timestamp(todayInSeconds - 86400, todayInNanoSeconds);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -128,10 +125,7 @@ class _FlutterInstagramStoriesState extends State<FlutterInstagramStories> {
       color: Colors.white,
       height: widget.iconHeight + 24,
       child: StreamBuilder<QuerySnapshot>(
-        stream: _firestore
-            .collection(widget.collectionDbName)
-//             .where("date", isGreaterThanOrEqualTo: cutOff)           
-            .snapshots(),
+        stream: _querySnapshot,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return ListView.builder(
