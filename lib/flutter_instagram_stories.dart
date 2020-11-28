@@ -60,7 +60,7 @@ final QuerySnapshot querySnapshot;
 
   FlutterInstagramStories(
       {@required this.collectionDbName,
-       @required this.querySnapshot
+       @required this.querySnapshot,
       this.lastIconHighlight = false,
       this.lastIconHighlightColor = Colors.deepOrange,
       this.lastIconHighlightRadius = const Radius.circular(15.0),
