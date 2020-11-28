@@ -112,6 +112,14 @@ class _FlutterInstagramStoriesState extends State<FlutterInstagramStories> {
     _storiesData = StoriesData(languageCode: widget.languageCode);
     super.initState();
   }
+  
+    final now = Timestamp.now();
+
+  final todayInSeconds = now.seconds;
+  final todayInNanoSeconds = now.nanoseconds;
+
+//24 hours ago since now
+  final cutOff = Timestamp(todayInSeconds - 86400, todayInNanoSeconds);
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +130,7 @@ class _FlutterInstagramStoriesState extends State<FlutterInstagramStories> {
       child: StreamBuilder<QuerySnapshot>(
         stream: _firestore
             .collection(widget.collectionDbName)
+         .where("date", isGreaterThanOrEqualTo: cutOff)
             .orderBy('date', descending: widget.sortingOrderDesc)
             .snapshots(),
         builder: (context, snapshot) {
