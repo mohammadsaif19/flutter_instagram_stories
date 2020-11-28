@@ -113,13 +113,13 @@ class _FlutterInstagramStoriesState extends State<FlutterInstagramStories> {
     super.initState();
   }
   
-    final now = Timestamp.now();
+  var now = Timestamp.now();
 
-  final todayInSeconds = now.seconds;
-  final todayInNanoSeconds = now.nanoseconds;
+  var todayInSeconds = now.seconds;
+  var todayInNanoSeconds = now.nanoseconds;
 
 //24 hours ago since now
-  final cutOff = Timestamp(todayInSeconds - 86400, todayInNanoSeconds);
+  var cutOff = Timestamp(todayInSeconds - 86400, todayInNanoSeconds);
 
   @override
   Widget build(BuildContext context) {
